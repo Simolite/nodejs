@@ -1,0 +1,53 @@
+This is a standard Laravel assessment (CC1). Here are the detailed answers to all three parts of your exam.
+Partie 1 : Questions théoriques (8 pts)
+1. Qu'est-ce que Laravel ? Donner deux avantages.
+Laravel est un framework PHP open-source basé sur l'architecture MVC, conçu pour faciliter le développement d'applications web.
+ * Avantage 1 : Syntaxe expressive et élégante qui rend le code lisible.
+ * Avantage 2 : Écosystème riche avec des outils intégrés comme Eloquent ORM, Blade, et Artisan.
+2. Commande pour créer un nouveau projet Laravel :
+composer create-project laravel/laravel nom-du-projet
+
+(Ou via l'installeur Laravel : laravel new nom-du-projet)
+3. Le rôle de Composer dans Laravel :
+Composer est le gestionnaire de dépendances pour PHP. Il permet d'installer, de mettre à jour et de gérer les bibliothèques tierces (packages) dont Laravel a besoin pour fonctionner.
+4. L'architecture MVC dans Laravel :
+ * M (Model) : Gère la logique des données et communique avec la base de données (via Eloquent).
+ * V (View) : Gère l'affichage et l'interface utilisateur (généralement via Blade).
+ * C (Controller) : Reçoit les requêtes, traite les données via le modèle et retourne la vue appropriée.
+5. Rôle de @extends dans Blade :
+Elle permet d'hériter d'une mise en page parente (layout). Cela permet de réutiliser une structure HTML commune (header, footer) dans plusieurs vues.
+Partie 2 : Routage et Controller (5 pts)
+6. Route affichant le message (dans routes/web.php) :
+Route::get('/welcome', function () {
+    return "Bienvenue dans Laravel";
+});
+
+7. Créer le contrôleur (en ligne de commande) :
+php artisan make:controller WelcomeController
+
+8. Méthode bonjour() dans WelcomeController.php :
+public function bonjour() {
+    return view('bonjour');
+}
+
+9. Route appelant la méthode du contrôleur :
+use App\Http\Controllers\WelcomeController;
+
+Route::get('/bonjour', [WelcomeController::class, 'bonjour']);
+
+Partie 3 : Migration et Model (7 pts)
+10. Commande pour créer le modèle avec migration :
+php artisan make:model Produit -m
+
+11. Compléter la migration (dans le fichier créé dans database/migrations) :
+Schema::create('produits', function (Blueprint $table) {
+    $table->id();
+    $table->string('nom');
+    $table->decimal('prix', 8, 2);
+    $table->timestamps();
+});
+
+12. Commande pour exécuter les migrations :
+php artisan migrate
+
+Souhaitez-vous que je vous explique plus en détail le fonctionnement d'Eloquent ORM pour gérer les données de votre table "produits" ?
