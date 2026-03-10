@@ -1,5 +1,5 @@
 import express from "express";
-// import connectDB from "./conn.js";
+import connectDB from "./conn.js";
 
 const app = express();
 const ipv4 = "192.168.1.189";
@@ -7,22 +7,6 @@ const port = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-
-import {MongoClient} from "mongodb"
-
-const url = "mongodb://127.0.0.1:27017"
-const dbname = "local"
-
-
-export async function connectDB() {
-    const client = new MongoClient(url);
-    await client.connect();
-    let db = client.db(dbname);
-    console.log("Connected to MongoDB");
-    return db;
-}
-
 let db = await connectDB()
 
 // Get all users
